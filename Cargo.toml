@@ -5,7 +5,7 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 readme = "readme.md"
 authors = ["James Youngblood (soundeffects) <james@youngbloods.org>"]
-description = "Terrain solutions for bevy in 2D and 3D, using texture-mapping."
+description = "'Smooth terrain' solutions for bevy in 2D and 3D, using texture-mapping."
 repository = "https://github.com/soundeffects/bevy_terrain"
 
 [dependencies]

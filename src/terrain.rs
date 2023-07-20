@@ -1,5 +1,3 @@
-use bevy::prelude::Component;
-
 pub trait Terrain<Config>: Default {
     fn new(config: Config) -> Self;
     fn config(&self) -> &Config;
