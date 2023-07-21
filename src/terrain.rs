@@ -1,8 +1,13 @@
-pub trait Terrain<Config>: Default {
-    fn new(config: Config) -> Self;
-    fn config(&self) -> &Config;
-    fn set_config(&mut self, config: Config);
+use bevy::prelude::*;
+
+pub trait Terrain {
+    type Config;
+
+    fn new(config: Self::Config) -> Self;
+    fn config(&self) -> &Self::Config;
+    fn set_config(&mut self, config: Self::Config);
     fn write(&self);
     fn sample(&self);
-    fn mesh(&self);
+    fn generate_mesh(&mut self, meshes: ResMut<Assets<Mesh>>);
+    fn mesh(&self) -> Handle<Mesh>;
 }

@@ -9,4 +9,4 @@ description = "'Smooth terrain' solutions for bevy in 2D and 3D, using texture-m
 repository = "https://github.com/soundeffects/bevy_terrain"
 
 [dependencies]
-bevy = "0.10"
+bevy = "0.11"
