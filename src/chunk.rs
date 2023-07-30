@@ -133,7 +133,7 @@ where
 /// developer using `bevy_terrain` so that they can avoid an extra import for
 /// `ndshape` in their code.
 #[inline]
-pub fn chunk_shape_2d<const X: usize>() -> ConstPow2Shape2usize<X, X> {
+pub const fn chunk_shape_2d<const X: usize>() -> ConstPow2Shape2usize<X, X> {
     ConstPow2Shape2usize::<X, X>
 }
 
@@ -142,7 +142,7 @@ pub fn chunk_shape_2d<const X: usize>() -> ConstPow2Shape2usize<X, X> {
 /// developer using `bevy_terrain` so that they can avoid an extra import for
 /// `ndshape` in their code.
 #[inline]
-pub fn chunk_shape_3d<const X: usize>() -> ConstPow2Shape3usize<X, X, X> {
+pub const fn chunk_shape_3d<const X: usize>() -> ConstPow2Shape3usize<X, X, X> {
     ConstPow2Shape3usize::<X, X, X>
 }
 
@@ -151,7 +151,7 @@ pub fn chunk_shape_3d<const X: usize>() -> ConstPow2Shape3usize<X, X, X> {
 /// developer using `bevy_terrain` so that they can avoid an extra import for
 /// `ndshape` in their code.
 #[inline]
-pub fn chunk_shape_4d<const X: usize>() -> ConstPow2Shape4usize<X, X, X, X> {
+pub const fn chunk_shape_4d<const X: usize>() -> ConstPow2Shape4usize<X, X, X, X> {
     ConstPow2Shape4usize::<X, X, X, X>
 }
 
@@ -199,7 +199,10 @@ macro_rules! create_chunk_type {
         }
 
         impl $name {
-            const SHAPE: Box<dyn Shape<$dim, Coord = usize>> = Box::new($shape);
+            #[inline]
+            fn shape() -> impl Shape<$dim, Coord = usize> {
+                $shape
+            }
         }
 
         impl Sampleable<$data_type, $dim> for $name {
@@ -221,12 +224,12 @@ macro_rules! create_chunk_type {
 
             #[inline]
             fn linearize(pos: [usize; $dim]) -> usize {
-                Self::SHAPE.linearize(pos)
+                Self::shape().linearize(pos)
             }
 
             #[inline]
             fn delinearize(index: usize) -> [usize; $dim] {
-                Self::SHAPE.delinearize(index)
+                Self::shape().delinearize(index)
             }
 
             #[inline]

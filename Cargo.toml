@@ -11,6 +11,8 @@ repository = "https://github.com/soundeffects/bevy_terrain"
 [dependencies]
 bevy = "0.11"
 ndshape = "0.3"
+quick_cache = "0.3"
+rocksdb = "0.21"
 
 [dev-dependencies]
 smooth-bevy-cameras = { git = "https://github.com/bonsairobo/smooth-bevy-cameras",  commit = "ed8ba36" }

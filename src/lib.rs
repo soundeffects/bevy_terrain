@@ -1,6 +1,5 @@
 pub mod chunk;
-pub mod chunkmap;
-pub mod planar_terrain;
+pub mod chunk_server;
 
 #[test]
 fn general_test() {

@@ -30,9 +30,7 @@ impl Plugin for PlanarTerrainMeshingPlugin {
     }
 }
 
-fn outdated_chunks() {
-    
-}
+fn outdated_chunks() {}
 
 fn planar_meshing(
     mut commands: Commands,
