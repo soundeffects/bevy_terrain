@@ -1,4 +1,5 @@
 pub mod chunk;
+pub mod chunkmap;
 pub mod planar_terrain;
 
 #[test]
